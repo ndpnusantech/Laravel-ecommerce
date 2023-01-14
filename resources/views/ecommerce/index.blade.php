@@ -1,6 +1,6 @@
 @extends('layouts.top-app')
 
-@section('title', 'Top Layout')
+@section('title', 'Dashboard')
 
 @push('style')
     <!-- CSS Libraries -->

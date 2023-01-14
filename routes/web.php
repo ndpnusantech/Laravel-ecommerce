@@ -13,7 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/layout-top-navigation');
+// Route::redirect('/', '/layout-top-navigation');
+
+//  E-Commerce
+Route::get('/', function () {
+    return view('ecommerce.index', ['type_menu' => 'dashboard']);
+});
+Route::get('/detail-produk', function () {
+    return view('ecommerce.detail-produk', ['type_menu' => 'detail']);
+});
 
 // Dashboard
 Route::get('/dashboard-general-dashboard', function () {

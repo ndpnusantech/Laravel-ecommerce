@@ -1,18 +1,8 @@
 <div class="navbar-bg"></div>
 <nav class="navbar navbar-expand-lg main-navbar">
-    <a href="index.html" class="navbar-brand sidebar-gone-hide">Stisla</a>
+    <a href="{{ url('/') }}" class="navbar-brand sidebar-gone-hide">Haji Sabar</a>
     <div class="navbar-nav">
         <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
-    </div>
-    <div class="nav-collapse">
-        <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
-            <i class="fas fa-ellipsis-v"></i>
-        </a>
-        <ul class="navbar-nav">
-            <li class="nav-item active"><a href="#" class="nav-link">Application</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Report Something</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Server Status</a></li>
-        </ul>
     </div>
     <form class="form-inline ml-auto">
         <ul class="navbar-nav">
@@ -89,7 +79,7 @@
         </div>
     </form>
     <ul class="navbar-nav navbar-right">
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
+        {{-- <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
                 class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
                 <div class="dropdown-header">Messages
@@ -215,8 +205,8 @@
                     <a href="#">View All <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
-        </li>
-        <li class="dropdown"><a href="#" data-toggle="dropdown"
+        </li> --}}
+        {{-- <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
@@ -237,6 +227,21 @@
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
             </div>
+        </li> --}}
+        <li class="dropdown"><a href="#" data-toggle="dropdown"
+                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                {{-- <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" class="rounded-circle mr-1"> --}}
+                <div class="d-sm-none d-lg-inline-block">Login | Register</div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-title">Selamat Datang</div>
+                <a href="features-profile.html" class="dropdown-item has-icon">
+                    <i class="fa-solid fa-user-plus"></i> Register
+                </a>
+                <a href="features-activities.html" class="dropdown-item has-icon">
+                    <i class="fa-solid fa-right-to-bracket"></i> Login
+                </a>
+            </div>
         </li>
     </ul>
 </nav>
@@ -246,7 +251,7 @@
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i
-                        class="fas fa-fire"></i><span>Dashboard</span></a>
+                        class="fas fa-fire"></i><span>Promo 13.13</span></a>
                 <ul class="dropdown-menu">
                     <li class="nav-item"><a href="{{ url('/dashboard-general-dashboard') }}" class="nav-link">General
                             Dashboard</a></li>
@@ -255,11 +260,11 @@
                 </ul>
             </li>
             <li class="nav-item active">
-                <a href="#" class="nav-link"><i class="far fa-heart"></i><span>Top Navigation</span></a>
+                <a href="#" class="nav-link"><i class="far fa-heart"></i><span>Favorite</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i
-                        class="far fa-clone"></i><span>Multiple Dropdown</span></a>
+                        class="far fa-clone"></i><span>Kategori</span></a>
                 <ul class="dropdown-menu">
                     <li class="nav-item"><a href="#" class="nav-link">Not Dropdown Link</a></li>
                     <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Hover Me</a>
