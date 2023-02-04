@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WebController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,14 +17,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::redirect('/', '/layout-top-navigation');
+// Route::redirect('/home', '/');
 
 //  E-Commerce
+Route::middleware(['auth', 'role'])->group(function () {
+    // Admin Route
+        // Master
+        Route::resource('web', WebController::class);
+        Route::resource('kategori', KategoriController::class);
+        Route::resource('produk', ProdukController::class);
+        Route::resource('user', UserController::class);
+});
+// User Route
 Route::get('/', function () {
     return view('ecommerce.index', ['type_menu' => 'dashboard']);
 });
 Route::get('/detail-produk', function () {
     return view('ecommerce.detail-produk', ['type_menu' => 'detail']);
 });
+// E-Commerce Auth
+Route::get('/dashboard', function () {
+    return view('ecommerce.admin.index', ['type_menu' => 'admin']);
+});
+
 
 // Dashboard
 Route::get('/dashboard-general-dashboard', function () {

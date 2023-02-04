@@ -34,7 +34,5 @@ $("#table-1").dataTable({
   ]
 });
 $("#table-2").dataTable({
-  "columnDefs": [
-    { "sortable": false, "targets": [0,2,3] }
-  ]
+
 });
