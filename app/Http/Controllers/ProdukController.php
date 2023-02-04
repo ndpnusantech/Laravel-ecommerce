@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produk;
+use App\Models\Kategori;
 use App\Http\Requests\StoreProdukRequest;
 use App\Http\Requests\UpdateProdukRequest;
+use Illuminate\Support\Facades\DB;
 
 class ProdukController extends Controller
 {
@@ -15,7 +17,13 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        //
+        $type_menu = 'produk';
+        $datas = DB::table('produks')
+                ->join('kategoris', 'kategoris.id', '=', 'produks.id_kategori')
+                ->select('produks.*', 'kategoris.nama_kategori')
+                ->get();
+        $kategoris = Kategori::all();
+        return view('ecommerce.admin.produk', compact('datas', 'type_menu', 'kategoris'));
     }
 
     /**
@@ -36,7 +44,20 @@ class ProdukController extends Controller
      */
     public function store(StoreProdukRequest $request)
     {
-        //
+        $data = new Produk;
+        $gambar = $request->gambar;
+        $gambarname = time().'.'.$gambar->getClientOriginalExtension();
+        $gambar->storeAs('public/img/gambar', $gambarname);
+        $data->id_kategori = $request->id_kategori;
+        $data->nama_produk = $request->nama_produk;
+        $data->desk_produk = $request->desk_produk;
+        $data->jumlah = $request->jumlah;
+        $data->diskon = $request->diskon;
+        $data->harga = $request->harga;
+        $data->gambar = $gambarname;
+        $data->save();
+
+        return redirect()->back()->with('message', 'Berhasil Menambahkan Data!');
     }
 
     /**

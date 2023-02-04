@@ -16,4 +16,9 @@ class Kategori extends Model
         'nama_kategori',
         'desk_kategori',
     ];
+
+    public function produk()
+    {
+        return $this->belongsTo(Produk::class);
+    }
 }

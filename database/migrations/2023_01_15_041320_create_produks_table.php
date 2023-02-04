@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('produks', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_kategori');
+            $table->unsignedBigInteger('id_kategori');
             $table->string('nama_produk');
             $table->string('desk_produk');
             $table->integer('jumlah');
@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('gambar');
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
+
+            $table->foreign('id_kategori')->references('id')->on('kategoris');
         });
     }
 

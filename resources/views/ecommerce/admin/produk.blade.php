@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Web')
+@section('title', 'Produk')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -21,7 +21,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Web</h1>
+                <h1>Produk</h1>
             </div>
 
             <div class="section-body">
@@ -50,12 +50,13 @@
                                                     </div>
                                                 </th>
                                                 <th>#</th>
-                                                <th>Nama</th>
-                                                <th>Inisial</th>
-                                                <th>Deskripsi</th>
-                                                <th>Logo</th>
-                                                <th>Copyright</th>
-                                                <th>Tahun</th>
+                                                <th>Nama Produk</th>
+                                                <th>Kategori</th>
+                                                <th>Deskripsi Produk</th>
+                                                <th>Jumlah</th>
+                                                <th>Diskon</th>
+                                                <th>Harga</th>
+                                                <th>Gambar</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -63,7 +64,7 @@
                                             @php
                                                 $no = 1;
                                             @endphp
-                                            @foreach ($webs as $dataWeb)
+                                            @foreach ($datas as $data)
                                                 <tr>
                                                     <td>
                                                         <div class="custom-checkbox custom-control">
@@ -74,27 +75,28 @@
                                                         </div>
                                                     </td>
                                                     <td>{{ $no++ }}</td>
-                                                    <td>{{ $dataWeb->nama_web }}</td>
-                                                    <td>{{ $dataWeb->inis_web }}</td>
-                                                    <td>{{ $dataWeb->desk_web }}</td>
+                                                    <td>{{$data->nama_produk}}</td>
+                                                    <td>{{$data->nama_kategori}}</td>
+                                                    <td>{{$data->desk_produk}}</td>
+                                                    <td>{{number_format($data->jumlah)}}</td>
+                                                    <td>{{number_format($data->diskon)}}</td>
+                                                    <td>{{number_format($data->harga)}}</td>
                                                     <td>
-                                                        <img src="{{ asset('storage/img/logo/'.$dataWeb->logo_web) }}" alt="logo" width="100%" srcset="">
+                                                        <img src="{{ asset('storage/img/gambar/'.$data->gambar) }}" alt="logo" width="100%" srcset="">
                                                     </td>
-                                                    <td>{{ $dataWeb->copy_web }}</td>
-                                                    <td>{{ $dataWeb->year_web }}</td>
                                                     <td>
                                                         <a href="#" class="btn btn-primary" data-bs-toggle="modal"
-                                                            data-bs-target="#exampleModal{{ $dataWeb->id }}">
+                                                            data-bs-target="#exampleModal{{ $data->id }}">
                                                             <i class="fa-solid fa-edit"></i> Edit
                                                         </a>
-                                                        <a href="{{ route('web.destroy', $dataWeb->id) }}"
-                                                            onclick="event.preventDefault();document.getElementById('delete-form{{ $dataWeb->id }}').submit();"
+                                                        <a href="{{ route('produk.destroy', $data->id) }}"
+                                                            onclick="event.preventDefault();document.getElementById('delete-form{{ $data->id }}').submit();"
                                                             class="btn btn-danger">
                                                             <i class="fa-solid fa-trash"></i> Delete
                                                         </a>
                                                     </td>
-                                                    <form id="delete-form{{ $dataWeb->id }}"
-                                                        action="{{ route('web.destroy', $dataWeb->id) }}" method="POST">
+                                                    <form id="delete-form{{ $data->id }}"
+                                                        action="{{ route('produk.destroy', $data->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                     </form>
@@ -115,38 +117,44 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Web</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Produk</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ route('web.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('produk.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <label for="" class="form-label">Nama</label>
-                                    <input type="text" name="nama" id="" class="form-control">
+                                    <label for="" class="form-label">Kategori</label>
+                                    <select name="id_kategori" id="" class="form-control">
+                                        @foreach ($kategoris as $kategori)
+                                            <option value="{{$kategori->id}}">{{$kategori->nama_kategori}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-lg-12">
-                                    <label for="" class="form-label">Inisial</label>
-                                    <input type="text" name="inisial" id="" class="form-control">
+                                    <label for="nama" class="form-label">Nama</label>
+                                    <input type="text" name="nama_produk" id="nama" class="form-control">
                                 </div>
                                 <div class="col-lg-12">
-                                    <label for="" class="form-label">Logo</label>
-                                    <input type="file" accept=".jpg, .png, .svg" name="logo" id=""
-                                        class="form-control">
+                                    <label for="desk" class="form-label">Deskripsi</label>
+                                    <input type="text" name="desk_produk" id="desk" class="form-control">
                                 </div>
                                 <div class="col-lg-12">
-                                    <label for="" class="form-label">Deskripsi</label>
-                                    <input type="text" name="deskripsi" id="" class="form-control">
+                                    <label for="jumlah" class="form-label">Jumlah</label>
+                                    <input type="number" name="jumlah" id="jumlah" class="form-control">
                                 </div>
                                 <div class="col-lg-12">
-                                    <label for="" class="form-label">Copyright</label>
-                                    <input type="text" name="copy" id="" class="form-control">
+                                    <label for="diskon" class="form-label">Diskon</label>
+                                    <input type="number" name="diskon" id="diskon" class="form-control">
                                 </div>
                                 <div class="col-lg-12">
-                                    <label for="" class="form-label">Year</label>
-                                    <input type="number" min="1900" max="{{ date('Y') }}" name="tahun"
-                                        id="" class="form-control">
+                                    <label for=harga"" class="form-label">Harga</label>
+                                    <input type="number" name="harga" id="harga" class="form-control">
+                                </div>
+                                <div class="col-lg-12">
+                                    <label for="gambar" class="form-label">Gambar</label>
+                                    <input type="file" name="gambar" id="gambar" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -159,49 +167,57 @@
             </div>
         </div>
 
-        @foreach ($webs as $web)
+        @foreach ($datas as $data)
             <!-- Modal Update-->
-            <div class="modal fade" id="exampleModal{{ $web->id }}" tabindex="-1"
+            <div class="modal fade" id="exampleModal{{ $data->id }}" tabindex="-1"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Web</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Produk</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form action="{{ route('web.update', $web->id) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('produk.update', $data->id) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
                             <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <label for="" class="form-label">Nama</label>
-                                        <input type="text" value="{{$web->nama_web}}" name="nama" id="" class="form-control">
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <label for="" class="form-label">Inisial</label>
-                                        <input type="text" value="{{$web->inis_web}}" name="inisial" id="" class="form-control">
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <label for="" class="form-label">Logo</label>
-                                        <input type="file" accept=".jpg, .png, .svg" value="{{$web->logo_web}}" name="logo" id=""
-                                            class="form-control">
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <label for="" class="form-label">Deskripsi</label>
-                                        <input type="text" value="{{$web->desk_web}}" name="deskripsi" id="" class="form-control">
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <label for="" class="form-label">Copyright</label>
-                                        <input type="text" value="{{$web->copy_web}}" name="copy" id="" class="form-control">
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <label for="" class="form-label">Year</label>
-                                        <input type="number" min="1900" max="{{ date('Y') }}" value="{{$web->year_web}}" name="tahun"
-                                            id="" class="form-control">
-                                    </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="" class="form-label">Kategori</label>
+                                    <select name="id_kategori" id="" class="form-control">
+                                        @foreach ($kategoris as $kategori)
+                                            <option value="{{$kategori->id}}" {{$data->id_kategori == $kategori->id? 'selected':''}}>{{$kategori->nama_kategori}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
+                                <div class="col-lg-12">
+                                    <label for="nama" class="form-label">Nama</label>
+                                    <input type="text" name="nama_produk" value="{{$data->nama_produk}}" id="nama" class="form-control">
+                                </div>
+                                <div class="col-lg-12">
+                                    <label for="desk" class="form-label">Deskripsi</label>
+                                    <input type="text" name="desk_produk" value="{{$data->desk_produk}}" id="desk" class="form-control">
+                                </div>
+                                <div class="col-lg-12">
+                                    <label for="jumlah" class="form-label">Jumlah</label>
+                                    <input type="number" name="jumlah" value="{{$data->jumlah}}" id="jumlah" class="form-control">
+                                </div>
+                                <div class="col-lg-12">
+                                    <label for="diskon" class="form-label">Diskon</label>
+                                    <input type="number" name="diskon" value="{{$data->diskon}}" id="diskon" class="form-control">
+                                </div>
+                                <div class="col-lg-12">
+                                    <label for=harga"" class="form-label">Harga</label>
+                                    <input type="number" name="harga" value="{{$data->harga}}" id="harga" class="form-control">
+                                </div>
+                                <div class="col-lg-12">
+                                    <label for="gambar" class="form-label">Gambar</label>
+                                    <input type="file" name="gambar" value="{{$data->gambar}}" id="gambar" class="form-control">
+                                </div>
+                            </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

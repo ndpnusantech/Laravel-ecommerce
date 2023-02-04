@@ -40,215 +40,27 @@
             <h2 class="text-center mt-3">Favorite</h2>
             <p class="text-center">Belanja Sekarang! untuk produk-produk favorite pilihan mu</p>
             <div class="row">
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <a class="text-decoration-none" href="{{ url('detail-produk?id=') }}">
-                        <article class="article article-style-b">
-                            <div class="article-header">
-                                <div class="article-image" data-background="{{ asset('img/news/img13.jpg') }}">
+                @foreach ($datas as $data)
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                        <a class="text-decoration-none" href="{{ url('detail-produk?id='.$data->id) }}">
+                            <article class="article article-style-b">
+                                <div class="article-header">
+                                    <div class="article-image" data-background="{{ asset('storage/img/gambar/'.$data->gambar) }}">
+                                    </div>
+                                    <div class="article-badge">
+                                        <div class="article-badge-item bg-danger"><i class="fas fa-heart"></i> {{$data->nama_kategori}}</div>
+                                    </div>
                                 </div>
-                                <div class="article-badge">
-                                    <div class="article-badge-item bg-danger"><i class="fas fa-heart"></i> Favorite</div>
+                                <div class="article-details">
+                                    <div class="article-title">
+                                        <h6 class="text-bold text-primary">{{ucwords($data->nama_produk)}}</h6>
+                                    </div>
+                                    <p>Rp. {{number_format($data->harga)}} </p>
                                 </div>
-                            </div>
-                            <div class="article-details">
-                                <div class="article-title">
-                                    <h6 class="text-bold text-primary">Gulai Kawat</h6>
-                                </div>
-                                <p>Rp. 1.000.000 </p>
-                            </div>
-                        </article>
-                    </a>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <a class="text-decoration-none" href="{{ url('detail-produk?id=') }}">
-                        <article class="article article-style-b">
-                            <div class="article-header">
-                                <div class="article-image" data-background="{{ asset('img/news/img13.jpg') }}">
-                                </div>
-                                <div class="article-badge">
-                                    <div class="article-badge-item bg-danger"><i class="fas fa-heart"></i> Favorite</div>
-                                </div>
-                            </div>
-                            <div class="article-details">
-                                <div class="article-title">
-                                    <h6 class="text-bold text-primary">Gulai Kawat</h6>
-                                </div>
-                                <p>Rp. 1.000.000 </p>
-                            </div>
-                        </article>
-                    </a>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <a class="text-decoration-none" href="{{ url('detail-produk?id=') }}">
-                        <article class="article article-style-b">
-                            <div class="article-header">
-                                <div class="article-image" data-background="{{ asset('img/news/img13.jpg') }}">
-                                </div>
-                                <div class="article-badge">
-                                    <div class="article-badge-item bg-danger"><i class="fas fa-heart"></i> Favorite</div>
-                                </div>
-                            </div>
-                            <div class="article-details">
-                                <div class="article-title">
-                                    <h6 class="text-bold text-primary">Gulai Kawat</h6>
-                                </div>
-                                <p>Rp. 1.000.000 </p>
-                            </div>
-                        </article>
-                    </a>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <a class="text-decoration-none" href="{{ url('detail-produk?id=') }}">
-                        <article class="article article-style-b">
-                            <div class="article-header">
-                                <div class="article-image" data-background="{{ asset('img/news/img13.jpg') }}">
-                                </div>
-                                <div class="article-badge">
-                                    <div class="article-badge-item bg-danger"><i class="fas fa-heart"></i> Favorite</div>
-                                </div>
-                            </div>
-                            <div class="article-details">
-                                <div class="article-title">
-                                    <h6 class="text-bold text-primary">Gulai Kawat</h6>
-                                </div>
-                                <p>Rp. 1.000.000 </p>
-                            </div>
-                        </article>
-                    </a>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <a class="text-decoration-none" href="{{ url('detail-produk?id=') }}">
-                        <article class="article article-style-b">
-                            <div class="article-header">
-                                <div class="article-image" data-background="{{ asset('img/news/img13.jpg') }}">
-                                </div>
-                                <div class="article-badge">
-                                    <div class="article-badge-item bg-danger"><i class="fas fa-heart"></i> Favorite</div>
-                                </div>
-                            </div>
-                            <div class="article-details">
-                                <div class="article-title">
-                                    <h6 class="text-bold text-primary">Gulai Kawat</h6>
-                                </div>
-                                <p>Rp. 1.000.000 </p>
-                            </div>
-                        </article>
-                    </a>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <a class="text-decoration-none" href="{{ url('detail-produk?id=') }}">
-                        <article class="article article-style-b">
-                            <div class="article-header">
-                                <div class="article-image" data-background="{{ asset('img/news/img13.jpg') }}">
-                                </div>
-                                <div class="article-badge">
-                                    <div class="article-badge-item bg-danger"><i class="fas fa-heart"></i> Favorite</div>
-                                </div>
-                            </div>
-                            <div class="article-details">
-                                <div class="article-title">
-                                    <h6 class="text-bold text-primary">Gulai Kawat</h6>
-                                </div>
-                                <p>Rp. 1.000.000 </p>
-                            </div>
-                        </article>
-                    </a>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <a class="text-decoration-none" href="{{ url('detail-produk?id=') }}">
-                        <article class="article article-style-b">
-                            <div class="article-header">
-                                <div class="article-image" data-background="{{ asset('img/news/img13.jpg') }}">
-                                </div>
-                                <div class="article-badge">
-                                    <div class="article-badge-item bg-danger"><i class="fas fa-heart"></i> Favorite</div>
-                                </div>
-                            </div>
-                            <div class="article-details">
-                                <div class="article-title">
-                                    <h6 class="text-bold text-primary">Gulai Kawat</h6>
-                                </div>
-                                <p>Rp. 1.000.000 </p>
-                            </div>
-                        </article>
-                    </a>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <a class="text-decoration-none" href="{{ url('detail-produk?id=') }}">
-                        <article class="article article-style-b">
-                            <div class="article-header">
-                                <div class="article-image" data-background="{{ asset('img/news/img13.jpg') }}">
-                                </div>
-                                <div class="article-badge">
-                                    <div class="article-badge-item bg-danger"><i class="fas fa-heart"></i> Favorite</div>
-                                </div>
-                            </div>
-                            <div class="article-details">
-                                <div class="article-title">
-                                    <h6 class="text-bold text-primary">Gulai Kawat</h6>
-                                </div>
-                                <p>Rp. 1.000.000 </p>
-                            </div>
-                        </article>
-                    </a>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <a class="text-decoration-none" href="{{ url('detail-produk?id=') }}">
-                        <article class="article article-style-b">
-                            <div class="article-header">
-                                <div class="article-image" data-background="{{ asset('img/news/img13.jpg') }}">
-                                </div>
-                                <div class="article-badge">
-                                    <div class="article-badge-item bg-danger"><i class="fas fa-heart"></i> Favorite</div>
-                                </div>
-                            </div>
-                            <div class="article-details">
-                                <div class="article-title">
-                                    <h6 class="text-bold text-primary">Gulai Kawat</h6>
-                                </div>
-                                <p>Rp. 1.000.000 </p>
-                            </div>
-                        </article>
-                    </a>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <a class="text-decoration-none" href="{{ url('detail-produk?id=') }}">
-                        <article class="article article-style-b">
-                            <div class="article-header">
-                                <div class="article-image" data-background="{{ asset('img/news/img13.jpg') }}">
-                                </div>
-                                <div class="article-badge">
-                                    <div class="article-badge-item bg-danger"><i class="fas fa-heart"></i> Favorite</div>
-                                </div>
-                            </div>
-                            <div class="article-details">
-                                <div class="article-title">
-                                    <h6 class="text-bold text-primary">Gulai Kawat</h6>
-                                </div>
-                                <p>Rp. 1.000.000 </p>
-                            </div>
-                        </article>
-                    </a>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                    <a class="text-decoration-none" href="{{ url('detail-produk?id=') }}">
-                        <article class="article article-style-b">
-                            <div class="article-header">
-                                <div class="article-image" data-background="{{ asset('img/news/img13.jpg') }}">
-                                </div>
-                                <div class="article-badge">
-                                    <div class="article-badge-item bg-danger"><i class="fas fa-heart"></i> Favorite</div>
-                                </div>
-                            </div>
-                            <div class="article-details">
-                                <div class="article-title">
-                                    <h6 class="text-bold text-primary">Gulai Kawat</h6>
-                                </div>
-                                <p>Rp. 1.000.000 </p>
-                            </div>
-                        </article>
-                    </a>
-                </div>
+                            </article>
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </section>
     </div>

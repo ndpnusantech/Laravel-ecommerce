@@ -1,6 +1,6 @@
 <div class="navbar-bg"></div>
 <nav class="navbar navbar-expand-lg main-navbar">
-    <a href="{{ url('/') }}" class="navbar-brand sidebar-gone-hide">Haji Sabar</a>
+    <a href="{{ url('/') }}" class="navbar-brand sidebar-gone-hide">{{session('namaWeb')}}</a>
     <div class="navbar-nav">
         <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
     </div>

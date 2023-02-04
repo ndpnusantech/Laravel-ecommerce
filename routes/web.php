@@ -5,6 +5,8 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebController;
+use App\Models\Web;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,11 +31,39 @@ Route::middleware(['auth', 'role'])->group(function () {
         Route::resource('user', UserController::class);
 });
 // User Route
-Route::get('/', function () {
-    return view('ecommerce.index', ['type_menu' => 'dashboard']);
+Route::get('/', function (Request $request) {
+    // bagian session web start
+    $webSession = Web::first();
+    $nama_web = isset($webSession->nama_web)?$webSession->nama_web:'';
+    $inis_web = isset($webSession->inis_web)?$webSession->inis_web:'';
+    $desk_web = isset($webSession->desk_web)?$webSession->desk_web:'';
+    $logo_web = isset($webSession->logo_web)?$webSession->logo_web:'';
+    $copy_web = isset($webSession->copy_web)?$webSession->copy_web:'';
+    $year_web = isset($webSession->year_web)?$webSession->year_web:'';
+    $request->session()->put('namaWeb', $nama_web);
+    $request->session()->put('inisWeb', $inis_web);
+    $request->session()->put('deskWeb', $desk_web);
+    $request->session()->put('logoWeb', $logo_web);
+    $request->session()->put('copyWeb', $copy_web);
+    $request->session()->put('yearWeb', $year_web);
+    // bagian session web end
+
+    $datas = DB::table('produks')
+    ->join('kategoris', 'kategoris.id', '=', 'produks.id_kategori')
+    ->select('produks.*', 'kategoris.nama_kategori')
+    ->get();
+    $type_menu = 'dashboard';
+    return view('ecommerce.index', compact('datas', 'type_menu'));
 });
 Route::get('/detail-produk', function () {
-    return view('ecommerce.detail-produk', ['type_menu' => 'detail']);
+
+    $datas = DB::table('produks')
+    ->join('kategoris', 'kategoris.id', '=', 'produks.id_kategori')
+    ->select('produks.*', 'kategoris.nama_kategori')
+    ->where('produks.id', '=', $_GET['id'])
+    ->get();
+    $type_menu = 'detail';
+    return view('ecommerce.detail-produk', compact('datas', 'type_menu'));
 });
 // E-Commerce Auth
 Route::get('/dashboard', function () {
