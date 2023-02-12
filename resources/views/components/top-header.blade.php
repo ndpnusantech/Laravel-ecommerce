@@ -1,6 +1,6 @@
 <div class="navbar-bg"></div>
 <nav class="navbar navbar-expand-lg main-navbar">
-    <a href="{{ url('/') }}" class="navbar-brand sidebar-gone-hide">{{session('namaWeb')}}</a>
+    <a href="{{ url('/') }}" class="navbar-brand sidebar-gone-hide">{{ session('namaWeb') }}</a>
     <div class="navbar-nav">
         <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
     </div>
@@ -145,23 +145,24 @@
                     <a href="#">View All <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
-        </li>
+        </li> --}}
         <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-                class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
+                class="nav-link notification-toggle nav-link-lg beep"><i class="fa-solid fa-cart-shopping"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
-                <div class="dropdown-header">Notifications
-                    <div class="float-right">
+                <div class="dropdown-header">Keranjang
+                    {{-- <div class="float-right">
                         <a href="#">Mark All As Read</a>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="dropdown-list-content dropdown-list-icons">
                     <a href="#" class="dropdown-item dropdown-item-unread">
                         <div class="dropdown-item-icon bg-primary text-white">
-                            <i class="fas fa-code"></i>
+                            <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" style="width:100%;"
+                                class="mr-1">
                         </div>
                         <div class="dropdown-item-desc">
-                            Template update is available now!
-                            <div class="time text-primary">2 Min Ago</div>
+                            Lontong Malam Dukijan
+                            <div class="time text-primary">Rp.30.000</div>
                         </div>
                     </a>
                     <a href="#" class="dropdown-item">
@@ -205,7 +206,7 @@
                     <a href="#">View All <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
-        </li> --}}
+        </li>
         @if (Auth::check())
             <li class="dropdown"><a href="#" data-toggle="dropdown"
                     class="nav-link dropdown-toggle nav-link-lg nav-link-user">
@@ -217,8 +218,8 @@
                     <a href="features-profile.html" class="dropdown-item has-icon">
                         <i class="far fa-user"></i> Profile
                     </a>
-                    <a href="features-activities.html" class="dropdown-item has-icon">
-                        <i class="fas fa-bolt"></i> Activities
+                    <a href="{{ route('transaksi.create') }}" class="dropdown-item has-icon">
+                        <i class="fas fa-bolt"></i> Transaksi
                     </a>
                     <a href="features-settings.html" class="dropdown-item has-icon">
                         <i class="fas fa-cog"></i> Settings

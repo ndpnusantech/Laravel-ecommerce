@@ -5,6 +5,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebController;
+use App\Http\Controllers\TransaksiController;
 use App\Models\Web;
 use Illuminate\Http\Request;
 /*
@@ -29,7 +30,8 @@ Route::middleware(['auth', 'role'])->group(function () {
         Route::resource('kategori', KategoriController::class);
         Route::resource('produk', ProdukController::class);
         Route::resource('user', UserController::class);
-});
+    });
+    Route::resource('transaksi', TransaksiController::class);
 // User Route
 Route::get('/', function (Request $request) {
     // bagian session web start
@@ -60,7 +62,7 @@ Route::get('/detail-produk', function () {
     $datas = DB::table('produks')
     ->join('kategoris', 'kategoris.id', '=', 'produks.id_kategori')
     ->select('produks.*', 'kategoris.nama_kategori')
-    ->where('produks.id', '=', $_GET['id'])
+    ->where('produks.id', '=', @$_GET['id'])
     ->get();
     $type_menu = 'detail';
     return view('ecommerce.detail-produk', compact('datas', 'type_menu'));
