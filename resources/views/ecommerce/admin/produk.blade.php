@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Produk')
+@section('title', 'Jasa')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -21,7 +21,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Produk</h1>
+                <h1>Jasa</h1>
             </div>
 
             <div class="section-body">
@@ -50,9 +50,9 @@
                                                     </div>
                                                 </th>
                                                 <th>#</th>
-                                                <th>Nama Produk</th>
+                                                <th>Nama Jasa</th>
                                                 <th>Kategori</th>
-                                                <th>Deskripsi Produk</th>
+                                                <th>Deskripsi Jasa</th>
                                                 <th>Jumlah</th>
                                                 <th>Diskon</th>
                                                 <th>Harga</th>
@@ -75,14 +75,15 @@
                                                         </div>
                                                     </td>
                                                     <td>{{ $no++ }}</td>
-                                                    <td>{{$data->nama_produk}}</td>
-                                                    <td>{{$data->nama_kategori}}</td>
-                                                    <td>{{$data->desk_produk}}</td>
-                                                    <td>{{number_format($data->jumlah)}}</td>
-                                                    <td>{{number_format($data->diskon)}}</td>
-                                                    <td>{{number_format($data->harga)}}</td>
+                                                    <td>{{ $data->nama_produk }}</td>
+                                                    <td>{{ $data->nama_kategori }}</td>
+                                                    <td>{{ $data->desk_produk }}</td>
+                                                    <td>{{ number_format($data->jumlah) }}</td>
+                                                    <td>{{ number_format($data->diskon) }}</td>
+                                                    <td>{{ number_format($data->harga) }}</td>
                                                     <td>
-                                                        <img src="{{ asset('storage/img/gambar/'.$data->gambar) }}" alt="logo" width="100%" srcset="">
+                                                        <img src="{{ asset('storage/img/gambar/' . $data->gambar) }}"
+                                                            alt="logo" width="100%" srcset="">
                                                     </td>
                                                     <td>
                                                         <a href="#" class="btn btn-primary" data-bs-toggle="modal"
@@ -117,7 +118,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Produk</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Jasa</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="{{ route('produk.store') }}" method="post" enctype="multipart/form-data">
@@ -128,7 +129,7 @@
                                     <label for="" class="form-label">Kategori</label>
                                     <select name="id_kategori" id="" class="form-control">
                                         @foreach ($kategoris as $kategori)
-                                            <option value="{{$kategori->id}}">{{$kategori->nama_kategori}}</option>
+                                            <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -174,7 +175,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Produk</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Jasa</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
@@ -184,40 +185,48 @@
                             @method('PATCH')
                             <div class="modal-body">
 
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <label for="" class="form-label">Kategori</label>
-                                    <select name="id_kategori" id="" class="form-control">
-                                        @foreach ($kategoris as $kategori)
-                                            <option value="{{$kategori->id}}" {{$data->id_kategori == $kategori->id? 'selected':''}}>{{$kategori->nama_kategori}}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <label for="" class="form-label">Kategori</label>
+                                        <select name="id_kategori" id="" class="form-control">
+                                            @foreach ($kategoris as $kategori)
+                                                <option value="{{ $kategori->id }}"
+                                                    {{ $data->id_kategori == $kategori->id ? 'selected' : '' }}>
+                                                    {{ $kategori->nama_kategori }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label for="nama" class="form-label">Nama</label>
+                                        <input type="text" name="nama_produk" value="{{ $data->nama_produk }}"
+                                            id="nama" class="form-control">
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label for="desk" class="form-label">Deskripsi</label>
+                                        <input type="text" name="desk_produk" value="{{ $data->desk_produk }}"
+                                            id="desk" class="form-control">
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label for="jumlah" class="form-label">Jumlah</label>
+                                        <input type="number" name="jumlah" value="{{ $data->jumlah }}" id="jumlah"
+                                            class="form-control">
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label for="diskon" class="form-label">Diskon</label>
+                                        <input type="number" name="diskon" value="{{ $data->diskon }}" id="diskon"
+                                            class="form-control">
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label for=harga"" class="form-label">Harga</label>
+                                        <input type="number" name="harga" value="{{ $data->harga }}" id="harga"
+                                            class="form-control">
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label for="gambar" class="form-label">Gambar</label>
+                                        <input type="file" name="gambar" value="{{ $data->gambar }}" id="gambar"
+                                            class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-lg-12">
-                                    <label for="nama" class="form-label">Nama</label>
-                                    <input type="text" name="nama_produk" value="{{$data->nama_produk}}" id="nama" class="form-control">
-                                </div>
-                                <div class="col-lg-12">
-                                    <label for="desk" class="form-label">Deskripsi</label>
-                                    <input type="text" name="desk_produk" value="{{$data->desk_produk}}" id="desk" class="form-control">
-                                </div>
-                                <div class="col-lg-12">
-                                    <label for="jumlah" class="form-label">Jumlah</label>
-                                    <input type="number" name="jumlah" value="{{$data->jumlah}}" id="jumlah" class="form-control">
-                                </div>
-                                <div class="col-lg-12">
-                                    <label for="diskon" class="form-label">Diskon</label>
-                                    <input type="number" name="diskon" value="{{$data->diskon}}" id="diskon" class="form-control">
-                                </div>
-                                <div class="col-lg-12">
-                                    <label for=harga"" class="form-label">Harga</label>
-                                    <input type="number" name="harga" value="{{$data->harga}}" id="harga" class="form-control">
-                                </div>
-                                <div class="col-lg-12">
-                                    <label for="gambar" class="form-label">Gambar</label>
-                                    <input type="file" name="gambar" value="{{$data->gambar}}" id="gambar" class="form-control">
-                                </div>
-                            </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -146,68 +146,68 @@
                 </div>
             </div>
         </li> --}}
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-                class="nav-link notification-toggle nav-link-lg beep"><i class="fa-solid fa-cart-shopping"></i></a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right">
-                <div class="dropdown-header">Keranjang
-                    {{-- <div class="float-right">
+        @if (Auth::check())
+            <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
+                    class="nav-link notification-toggle nav-link-lg beep"><i class="fa-solid fa-cart-shopping"></i></a>
+                <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                    <div class="dropdown-header">Keranjang
+                        {{-- <div class="float-right">
                         <a href="#">Mark All As Read</a>
                     </div> --}}
+                    </div>
+                    <div class="dropdown-list-content dropdown-list-icons">
+                        <a href="#" class="dropdown-item dropdown-item-unread">
+                            <div class="dropdown-item-icon bg-primary text-white">
+                                <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" style="width:100%;"
+                                    class="mr-1">
+                            </div>
+                            <div class="dropdown-item-desc">
+                                Lontong Malam Dukijan
+                                <div class="time text-primary">Rp.30.000</div>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon bg-info text-white">
+                                <i class="far fa-user"></i>
+                            </div>
+                            <div class="dropdown-item-desc">
+                                <b>You</b> and <b>Dedik Sugiharto</b> are now friends
+                                <div class="time">10 Hours Ago</div>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon bg-success text-white">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="dropdown-item-desc">
+                                <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
+                                <div class="time">12 Hours Ago</div>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon bg-danger text-white">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="dropdown-item-desc">
+                                Low disk space. Let's clean it!
+                                <div class="time">17 Hours Ago</div>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="dropdown-item-icon bg-info text-white">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div class="dropdown-item-desc">
+                                Welcome to Stisla template!
+                                <div class="time">Yesterday</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dropdown-footer text-center">
+                        <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                    </div>
                 </div>
-                <div class="dropdown-list-content dropdown-list-icons">
-                    <a href="#" class="dropdown-item dropdown-item-unread">
-                        <div class="dropdown-item-icon bg-primary text-white">
-                            <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" style="width:100%;"
-                                class="mr-1">
-                        </div>
-                        <div class="dropdown-item-desc">
-                            Lontong Malam Dukijan
-                            <div class="time text-primary">Rp.30.000</div>
-                        </div>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <div class="dropdown-item-icon bg-info text-white">
-                            <i class="far fa-user"></i>
-                        </div>
-                        <div class="dropdown-item-desc">
-                            <b>You</b> and <b>Dedik Sugiharto</b> are now friends
-                            <div class="time">10 Hours Ago</div>
-                        </div>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <div class="dropdown-item-icon bg-success text-white">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="dropdown-item-desc">
-                            <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
-                            <div class="time">12 Hours Ago</div>
-                        </div>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <div class="dropdown-item-icon bg-danger text-white">
-                            <i class="fas fa-exclamation-triangle"></i>
-                        </div>
-                        <div class="dropdown-item-desc">
-                            Low disk space. Let's clean it!
-                            <div class="time">17 Hours Ago</div>
-                        </div>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <div class="dropdown-item-icon bg-info text-white">
-                            <i class="fas fa-bell"></i>
-                        </div>
-                        <div class="dropdown-item-desc">
-                            Welcome to Stisla template!
-                            <div class="time">Yesterday</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="dropdown-footer text-center">
-                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
-        </li>
-        @if (Auth::check())
+            </li>
             <li class="dropdown"><a href="#" data-toggle="dropdown"
                     class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                     <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
@@ -258,9 +258,12 @@
 <nav class="navbar navbar-secondary navbar-expand-lg">
     <div class="container">
         <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a href="#" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+            </li>
             <li class="nav-item dropdown">
                 <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i
-                        class="fas fa-fire"></i><span>Promo 13.13</span></a>
+                        class="fas fa-fire"></i><span>About Us</span></a>
                 <ul class="dropdown-menu">
                     <li class="nav-item"><a href="{{ url('/dashboard-general-dashboard') }}"
                             class="nav-link">General
@@ -269,7 +272,7 @@
                             class="nav-link">Ecommerce Dashboard</a></li>
                 </ul>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a href="#" class="nav-link"><i class="far fa-heart"></i><span>Favorite</span></a>
             </li>
             <li class="nav-item dropdown">

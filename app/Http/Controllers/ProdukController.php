@@ -91,7 +91,22 @@ class ProdukController extends Controller
      */
     public function update(UpdateProdukRequest $request, Produk $produk)
     {
-        //
+        $data =  Produk::find($produk->id);
+        $gambar = $request->gambar;
+        $data->id_kategori = $request->id_kategori;
+        $data->nama_produk = $request->nama_produk;
+        $data->desk_produk = $request->desk_produk;
+        $data->jumlah = $request->jumlah;
+        $data->diskon = $request->diskon;
+        $data->harga = $request->harga;
+        if(!empty($gambar)){
+            $gambarname = time().'.'.$gambar->getClientOriginalExtension();
+            $gambar->storeAs('public/img/gambar', $gambarname);
+            $data->gambar = $gambarname;
+        }
+        $data->save();
+
+        return redirect()->back()->with('message', 'Berhasil Mengubah Data!');
     }
 
     /**

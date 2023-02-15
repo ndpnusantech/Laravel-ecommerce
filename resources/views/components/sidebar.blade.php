@@ -1,16 +1,16 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="/">{{session('namaWeb')}}</a>
+            <a href="/">{{ session('namaWeb') }}</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="/">{{session('inisWeb')}}</a>
+            <a href="/">{{ session('inisWeb') }}</a>
         </div>
         <ul class="sidebar-menu">
             {{-- E-Commerce Menu --}}
 
             <li class="{{ Request::is('web') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('web.index') }}"><i class="fas fa-globe"></i> <span>Web</span></a>
+                <a class="nav-link" href="{{ route('web.index') }}"><i class="fas fa-globe"></i> <span>Profil</span></a>
             </li>
             <li class="menu-header">Master</li>
             <li class="nav-item dropdown {{ $type_menu === 'master' ? 'active' : '' }}">
@@ -20,10 +20,19 @@
                         <a class="nav-link" href="{{ route('kategori.index') }}">Kategori</a>
                     </li>
                     <li class="{{ Request::is('produk') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('produk.index') }}">Produk</a>
+                        <a class="nav-link" href="{{ route('produk.index') }}">Jasa</a>
                     </li>
                     <li class="{{ Request::is('user') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('user.index') }}">User</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-header">Transaksi</li>
+            <li class="nav-item dropdown {{ $type_menu === 'transaksi' ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-dollar"></i><span>Transaksi</span></a>
+                <ul class="dropdown-menu">
+                    <li class='{{ Request::is('transaksi/create') ? 'active' : '' }}'>
+                        <a class="nav-link" href="{{ route('transaksi.create') }}">Invoice</a>
                     </li>
                 </ul>
             </li>

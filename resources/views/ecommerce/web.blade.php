@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Web')
+@section('title', 'Profil')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -21,7 +21,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Web</h1>
+                <h1>Profil</h1>
             </div>
 
             <div class="section-body">
@@ -78,7 +78,8 @@
                                                     <td>{{ $dataWeb->inis_web }}</td>
                                                     <td>{{ $dataWeb->desk_web }}</td>
                                                     <td>
-                                                        <img src="{{ asset('storage/img/logo/'.$dataWeb->logo_web) }}" alt="logo" width="100%" srcset="">
+                                                        <img src="{{ asset('storage/img/logo/' . $dataWeb->logo_web) }}"
+                                                            alt="logo" width="100%" srcset="">
                                                     </td>
                                                     <td>{{ $dataWeb->copy_web }}</td>
                                                     <td>{{ $dataWeb->year_web }}</td>
@@ -115,7 +116,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Web</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Profil</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="{{ route('web.store') }}" method="post" enctype="multipart/form-data">
@@ -166,7 +167,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Web</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profil</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
@@ -177,29 +178,34 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <label for="" class="form-label">Nama</label>
-                                        <input type="text" value="{{$web->nama_web}}" name="nama" id="" class="form-control">
+                                        <input type="text" value="{{ $web->nama_web }}" name="nama"
+                                            id="" class="form-control">
                                     </div>
                                     <div class="col-lg-12">
                                         <label for="" class="form-label">Inisial</label>
-                                        <input type="text" value="{{$web->inis_web}}" name="inisial" id="" class="form-control">
+                                        <input type="text" value="{{ $web->inis_web }}" name="inisial"
+                                            id="" class="form-control">
                                     </div>
                                     <div class="col-lg-12">
                                         <label for="" class="form-label">Logo</label>
-                                        <input type="file" accept=".jpg, .png, .svg" value="{{$web->logo_web}}" name="logo" id=""
-                                            class="form-control">
+                                        <input type="file" accept=".jpg, .png, .svg" value="{{ $web->logo_web }}"
+                                            name="logo" id="" class="form-control">
                                     </div>
                                     <div class="col-lg-12">
                                         <label for="" class="form-label">Deskripsi</label>
-                                        <input type="text" value="{{$web->desk_web}}" name="deskripsi" id="" class="form-control">
+                                        <input type="text" value="{{ $web->desk_web }}" name="deskripsi"
+                                            id="" class="form-control">
                                     </div>
                                     <div class="col-lg-12">
                                         <label for="" class="form-label">Copyright</label>
-                                        <input type="text" value="{{$web->copy_web}}" name="copy" id="" class="form-control">
+                                        <input type="text" value="{{ $web->copy_web }}" name="copy"
+                                            id="" class="form-control">
                                     </div>
                                     <div class="col-lg-12">
                                         <label for="" class="form-label">Year</label>
-                                        <input type="number" min="1900" max="{{ date('Y') }}" value="{{$web->year_web}}" name="tahun"
-                                            id="" class="form-control">
+                                        <input type="number" min="1900" max="{{ date('Y') }}"
+                                            value="{{ $web->year_web }}" name="tahun" id=""
+                                            class="form-control">
                                     </div>
                                 </div>
                             </div>
